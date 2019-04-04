@@ -8,6 +8,7 @@ class MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: <Widget>[
           _buildHeader(context),
+          _buildTextField(context),
           _buildDrawer(context),
         ],
       ),
@@ -51,28 +52,28 @@ class MyHomePageState extends State<MyHomePage> {
 
   Column _buildHeaderText() {
     return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(bottom: 5),
-              child: Text(
-                "Todo List",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(bottom: 5),
+          child: Text(
+            "Todo List",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
             ),
-            Text(
-              new DateTime.now().toString(),
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 15,
-              ),
-            ),
-          ],
-        );
+          ),
+        ),
+        Text(
+          new DateTime.now().toString(),
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 15,
+          ),
+        ),
+      ],
+    );
   }
 
   Widget _buildDrawer(BuildContext context) {
@@ -111,6 +112,52 @@ class MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildTextField(BuildContext context) {
+    var textController = new TextEditingController();
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: Colors.blueGrey,
+            width: 0.1,
+          ),
+        ),
+      ),
+      child: Row(
+        children: <Widget>[
+          Flexible(
+            child: TextField(
+              controller: textController,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: 'Add a new Todo!',
+                contentPadding: EdgeInsets.all(16),
+                filled: true,
+                fillColor: Colors.white,
+              ),
+            ),
+          ),
+          FlatButton(
+            child: Row(
+              children: <Widget>[
+                Icon(
+                  Icons.add,
+                  color: Colors.indigo,
+                ),
+                Text(
+                  "Add",
+                  style: TextStyle(
+                    color: Colors.indigo,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
