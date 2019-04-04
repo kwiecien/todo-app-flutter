@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TodoTextField extends StatelessWidget {
   @override
@@ -42,6 +43,17 @@ class TodoTextField extends StatelessWidget {
                 ),
               ],
             ),
+            onPressed: () {
+              if (textController.text.isNotEmpty) {
+                Firestore.instance.collection("todos").add({
+                  "description": textController.text,
+                  "done": false,
+                  "creationTime": DateTime.now()
+                }).then((snapshot) {
+                  textController.clear();
+                });
+              }
+            },
           ),
         ],
       ),
