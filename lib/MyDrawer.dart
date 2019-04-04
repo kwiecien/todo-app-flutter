@@ -8,7 +8,12 @@ class MyDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child: Text('Drawer Header'),
+            child: Text(
+                'Drawer Header',
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
