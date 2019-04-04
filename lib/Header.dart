@@ -5,7 +5,7 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 20, top: 50, bottom: 20, right: 10),
+      padding: EdgeInsets.only(left: 20, top: 20, bottom: 20, right: 10),
       width: double.infinity,
       decoration: BoxDecoration(
         gradient: LinearGradient(
