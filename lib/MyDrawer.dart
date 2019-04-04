@@ -8,14 +8,22 @@ class MyDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child: Text(
-                'Drawer Header',
-              style: TextStyle(
-                fontSize: 20,
-              ),
+            child: Column(
+              children: <Widget>[
+                Text(
+                  'Flutter Drawer',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontStyle: FontStyle.italic
+                  ),
+                ),
+                FlutterLogo(
+                  size: 80,
+                ),
+              ],
             ),
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: Colors.tealAccent,
             ),
           ),
           ListTile(
