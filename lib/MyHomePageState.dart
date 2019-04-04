@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app/MyHomePage.dart';
+import 'package:flutter_todo_app/TodoCard.dart';
+import 'package:intl/intl.dart';
 
 class MyHomePageState extends State<MyHomePage> {
   @override
@@ -9,7 +11,8 @@ class MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           _buildHeader(context),
           _buildTextField(context),
-          _buildDrawer(context),
+          _buildTasksList(context),
+//          _buildDrawer(context),
         ],
       ),
     );
@@ -51,6 +54,9 @@ class MyHomePageState extends State<MyHomePage> {
   }
 
   Column _buildHeaderText() {
+    var now = new DateTime.now();
+    var formatter = new DateFormat('EEEE, d MMMM yyyy');
+    String date = formatter.format(now);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -66,7 +72,7 @@ class MyHomePageState extends State<MyHomePage> {
           ),
         ),
         Text(
-          new DateTime.now().toString(),
+          date,
           style: TextStyle(
             color: Colors.white,
             fontSize: 15,
@@ -79,11 +85,7 @@ class MyHomePageState extends State<MyHomePage> {
   Widget _buildDrawer(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the Drawer if there isn't enough vertical
-        // space to fit everything.
         child: ListView(
-          // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
@@ -157,6 +159,23 @@ class MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  _buildTasksList(BuildContext context) {
+    return Expanded(
+      child: ListView(
+        padding: EdgeInsets.all(16),
+        children: <Widget>[
+          TodoCard(text: "Prepare presentation for Sonthofen"),
+          TodoCard(text: "Do laundry"),
+          TodoCard(text: "Go running"),
+          TodoCard(text: "Go grocery shopping"),
+          TodoCard(text: "Create a simple todo list app for Sonthofen Workshop 2019"),
+          TodoCard(text: "Go Snowboarding"),
+          TodoCard(text: "Take a nap"),
         ],
       ),
     );
