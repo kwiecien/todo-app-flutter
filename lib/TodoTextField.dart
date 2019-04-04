@@ -10,7 +10,7 @@ class TodoTextField extends StatelessWidget {
         border: Border(
           bottom: BorderSide(
             color: Colors.blueGrey,
-            width: 0.1,
+            width: 1,
           ),
         ),
       ),

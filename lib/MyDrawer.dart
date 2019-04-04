@@ -27,25 +27,35 @@ class MyDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            title: Text('Item 1'),
+            title: Text('Show Snackbar'),
             onTap: () {
-              // Update the state of the app
-              // ...
-              // Then close the drawer
+              _showSnackBar(context);
               Navigator.pop(context);
             },
           ),
           ListTile(
-            title: Text('Item 2'),
+            title: Text('Take a picture'),
             onTap: () {
-              // Update the state of the app
-              // ...
-              // Then close the drawer
+
               Navigator.pop(context);
             },
           ),
         ],
       ),
     );
+  }
+
+  void _showSnackBar(BuildContext context) {
+    final snackBar = SnackBar(
+      content: Text('Yay! A SnackBar!'),
+      action: SnackBarAction(
+        label: 'Hide',
+        onPressed: () {
+          // Some code to undo the change!
+        },
+      ),
+    );
+    // Find the Scaffold in the Widget tree and use it to show a SnackBar!
+    Scaffold.of(context).showSnackBar(snackBar);
   }
 }
